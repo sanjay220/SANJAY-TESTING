@@ -19,7 +19,7 @@ public class ApplicationImportandExport extends BaseClass {
 	
 	 @Given("^user is on application home page$")
 	    public void user_is_on_application_home_page() throws Throwable {
-		
+		login();
 		 System.out.println("home page is displayed");
 		 Thread.sleep(3000);
 		 driver.manage().window().maximize();

@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import com.Configuration.BaseClass;
@@ -20,13 +21,13 @@ public class ApplicationDescriptionStepDefintion extends BaseClass {
 		  launch("chrome");
 	    	Thread.sleep(3000);
 	    	login();
-	    	Thread.sleep(10000);
+	    	Thread.sleep(3000);
 	     
 	    }
 
 	    @When("^user creates an application with all description$")
 	    public void user_creates_an_application_with_all_description() throws Throwable {
-	    	driver.findElement(By.cssSelector("div.app.blue-dark app-core.ng-tns-c274-160.ng-star-inserted:nth-child(2) div.ng-tns-c274-160:nth-child(1) mat-drawer-container.mat-drawer-container.page-wrapper.ng-tns-c274-160 mat-drawer-content.mat-drawer-content:nth-child(4) div.p-20.mb-3 app-application-listing.ng-star-inserted div.search-header div.search-header-top.ng-star-inserted div:nth-child(1) button.mat-focus-indicator.mat-tooltip-trigger.mt-2.icon-position-fix-end.mat-icon-button.mat-button-base.mat-primary.ng-star-inserted:nth-child(2) span.mat-button-wrapper > mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color")).click();
+	    	  driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/button[1]/span[1]/mat-icon[1]")).click();
 		       Thread.sleep(2000);
 		       driver.findElement(By.xpath("//*[@id=\"mat-input-4\"]")).sendKeys( "APPLICATION_DESCRIPTION");
 		 	    Thread.sleep(3000);
@@ -38,13 +39,29 @@ public class ApplicationDescriptionStepDefintion extends BaseClass {
 		    	 r.keyPress(KeyEvent.VK_ENTER);  
 		    	 Thread.sleep(3000);
 		    	 driver.findElement( By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-creat-application[1]/div[1]/mat-vertical-stepper[1]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/app-application-basic-details[1]/div[2]/button[2]")).click();
-			       Thread.sleep(4000);
+			       Thread.sleep(6000);
 	       
 	    }
 	    
 	    
 	    @And("^user re-edit the  description and save it$")
 	    public void user_reedit_the_description_and_save_it() throws Throwable {
+	    	  driver.findElement(By.xpath("//*[@id=\"mat-input-8\"]")).sendKeys("APPLICATION_DESCRIPTION");
+	    	  Thread.sleep(3000);
+	    	  driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-content[1]")).click();
+	       Thread.sleep(3000);
+	       driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer[1]/div[1]/mat-nav-list[1]/mat-list-item[4]/div[1]/mat-icon[1]")).click();
+	       driver.findElement(By.xpath("//mat-icon[contains(text(),'edit')]")).click();
+	       Thread.sleep(3000);
+	       driver.findElement(By.xpath("//*[@id=\"mat-input-9\"]")).sendKeys("fhh");
+	    // WebElement ele=  driver.findElement(By.xpath("//div[@class='mat-form-field-infix ng-tns-c98-61']"));
+	       //driver.findElement(By.xpath("//div[@class='mat-form-field-infix ng-tns-c98-61']")).clear();
+	   //  Actions act = new Actions(driver);
+	   //  act.moveToElement(ele).click().build().perform();
+	    Thread.sleep(3000);
+	    // act.sendKeys("safhg");
+	    	//.drive.findElement(By.xpath("//*[@id=\"mat-input-28\"]")).sendKeys("adptesting");
+	       driver.findElement(By.xpath("//mat-icon[contains(text(),'save')]")).click();
 	       
 	    }
 

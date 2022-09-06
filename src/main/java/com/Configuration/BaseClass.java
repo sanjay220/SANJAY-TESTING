@@ -32,7 +32,7 @@ public static WebDriver driver;
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Admin\\eclipse-workspace\\ArchonLWS\\driver\\chromedriver.exe");
 			driver=new ChromeDriver(options);
 			//driver.get("http://192.168.1.188:4081/login");
-			driver.get("http://192.168.1.178:4081/login");
+			driver.get("http://192.168.1.188:4081/applications");
 			driver.manage().window().maximize();
 			Thread.sleep(3000);
 			
@@ -54,16 +54,16 @@ public static WebDriver driver;
 		//cap.setCapability(ChromeOptions.CAPABILITY, options);
 		//options.merge(cap);			
 		//driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 		
 				
 		return driver;
 }
 	
 	public static void login() throws InterruptedException {
-		 driver.findElement(By.xpath("//*[@id=\"mat-input-0\"]")).sendKeys("geetha");
+		 driver.findElement(By.xpath("//*[@id=\"mat-input-0\"]")).sendKeys("sysadmin");
 			Thread.sleep(3000);
-	        driver.findElement(By.xpath("//*[@id=\"mat-input-1\"]")).sendKeys("geetha");
+	        driver.findElement(By.xpath("//*[@id=\"mat-input-1\"]")).sendKeys("sysadmin");
 	        Thread.sleep(3000);
 	        driver.findElement(By.xpath("//*[@id=\"app\"]/app-login/div/mat-card/div/button/span[1]")).click();
 			

@@ -4,12 +4,16 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.Configuration.BaseClass;
 
@@ -40,7 +44,7 @@ login();
 	    }
 	  @When("^user fills the application info with application type active archiving$")
 	    public void user_fills_the_application_info_with_application_type_active_archiving() throws Throwable {
-		  driver.findElement(By.xpath("//*[@id=\"mat-input-4\"]")).sendKeys("APPLICATION_E2E");
+		  driver.findElement(By.xpath("//*[@id=\"mat-input-4\"]")).sendKeys("APPLICATION_E2E1");
 		    Thread.sleep(3000);
 		     driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys("TESTING-SA");
 		    Thread.sleep(3000);
@@ -114,7 +118,12 @@ login();
 
 	    @Then("^user clicks on created application$")
 	    public void user_clicks_on_created_application() throws Throwable {
-	    	driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_E2E')]")).click();
+	    	
+	    	//JavascriptExecutor jss=(JavascriptExecutor)driver;
+	    	//jss.executeScript("arguments[0].scrollIntoView()",driver.findElement( By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[11]/mat-card[1]/mat-card-content[1]")));
+	    	//jss.executeScript("window.scrollBy(0,1000)", "");
+	       // Thread.sleep(3000);
+	    	driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_E2E1')]")).click();
 	    	  Thread.sleep(3000);
 	    }
 
@@ -129,34 +138,47 @@ login();
 	    	driver.findElement(By.xpath("//mat-icon[contains(text(),'drive_folder_upload')]")).click();
 	    	Thread.sleep(3000);
 	    	driver.findElement(By.xpath("//span[contains(text(),'Ingest Data')]")).click();
-	    	Thread.sleep(2000);
+	    	
 	    	
 	    }
 
 	    @Then("^user ingest the data with proper creds$")
 	    public void user_ingest_the_data_with_proper_creds() throws Throwable {
 	    	//USED JS EXECUTOR AND ROBOT CLASS
-	    	//WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"));
+	    	//
 	    	
-	    	//executor.executeScript("arguments[0].value='5'",script);
 	    	
-	    	driver.switchTo().activeElement();
-	    	Robot rob = new Robot();
-	    	rob.keyPress(KeyEvent.VK_5);
-	    	rob.keyRelease(KeyEvent.VK_5);
-	    	  Thread.sleep(1000);
 	    	
+	    	/*  driver.switchTo().activeElement();
+		    	Robot rob = new Robot();
+		    	rob.keyPress(KeyEvent.VK_5);
+		    	rob.keyRelease(KeyEvent.VK_5);*/
+	    	
+	    	//
+	    	
+	          WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"));
+	          /*JavascriptExecutor executor = (JavascriptExecutor) driver;
+		    	executor.executeScript("arguments[0].value='5'",script);
+		    	Thread.sleep(2000);*/
+	          for(int i=0;i<5;i++)
+	          {
+	        	  script.sendKeys(Keys.ARROW_UP);
+	          }
+	          
+		    	
+		    	
+		    	
 		    	//JavascriptExecutor  executor = (JavascriptExecutor) driver;
 		    	
 		    	//driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
 		    	
-	    	//Actions nu = new Actions(driver);
+	    	//
 	    	//nu.moveToElement(driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"))).click().keyDown(Keys.ARROW_UP).perform();
 	    	//nu.moveToElement(driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"))).click().keyDown(Keys.ARROW_UP).perform();
 	       	
 	        
 	    	
-	    	// driver.findElement(By.xpath("//input[@formcontrolname='source']")).sendKeys("/home/ubuntu/DATA/BLOB_DATA/DBO");
+	    	 driver.findElement(By.xpath("//input[@formcontrolname='source']")).sendKeys("/home/ads-test/DATA/BLOB_DATA/DBO");
 	    
 	    
 	    	//
@@ -168,16 +190,40 @@ login();
 	    public void user_enter_source_path_to_ingest_data_and_click_ingest() throws Throwable {
 	    	
 	    	//USED JS EXECUTER
-	    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+	    	
+	    	//  Thread.sleep(2000);
+		    	//Robot ro = new Robot();
+		    	//ro.keyPress(KeyEvent.VK_O);
+		    	//ro.keyRelease(KeyEvent.VK_);
+	    	
+	    	
+	    	
+	    	/*exe = (JavascriptExecutor) driver;
 	    	  WebElement pass =driver.findElement(By.xpath("//input[@formcontrolname='source']"));
-	    	  pass.click();
-	    	  executor.executeScript("arguments[0].value='/home/ubuntu/DATA/BLOB_DATA/DB'",pass);
+	    	 
+	    	  exe.executeScript("arguments[0].value='/home/ubuntu/DATA/BLOB_DATA/DBO'",pass);
+	    	  //Actions nu = new Actions(driver);
+		    	//nu.moveToElement(pass) .click().build().perform();*/
+	    	  
+	    	  
+	    	  
+	    	  
+	    	  
+	    	  Thread.sleep(2000);
+	    	
+		    	 
+		    	//rob.keyPress(KeyEvent.VK_O);
+		    	//rob.keyRelease(KeyEvent.VK_O);
+		    	//Thread.sleep(2000);
+		    	//driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
+		    	/*Duration du = Duration.ofMinutes(20);
+		    	By by = By.xpath("//tbody/tr[1]/td[5]/mat-chip-list[1]/div[1]/mat-chip[1]");
+		    	WebDriverWait wait = new WebDriverWait(driver, du);
+		    	Boolean until = wait.until(ExpectedConditions.l(by, " Succeeded "));*/
 		    	
-		    	Robot rob = new Robot();
-		    	rob.keyPress(KeyEvent.VK_O);
-		    	rob.keyRelease(KeyEvent.VK_O);
-		    	Thread.sleep(2000);
-		    	driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
+		    	driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		    	
+		    	driver.findElement(By.xpath("//mat-icon[contains(text(),'laptop_chromebook')]")).click();
 	    	
 	    	
 	    }

@@ -53,9 +53,10 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	    	a.moveToElement(driver.findElement(By.xpath("//*[@id=\"mat-chip-list-input-0\"]"))).click().keyDown(Keys.SHIFT).sendKeys("adptesting").doubleClick().build().perform();
 	    	 Robot r = new Robot();
 	    	 r.keyPress(KeyEvent.VK_ENTER);  
-	    	
-	    	
 	    	 Thread.sleep(3000);
+	    	 
+	    	
+	    	 
 	    }
 
 	    @Then("^user should proceed to storage tier$")
@@ -243,7 +244,7 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	    
 	    @Then("^user clicks on created application$")
 	    public void user_clicks_on_created_application() throws Throwable {
-	    	driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[7]/mat-card[1]/mat-card-content[1]")).click();
+	    	driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_AUTOMATION')]")).click();
 	       Thread.sleep(3000);
 	    }
 
@@ -272,7 +273,10 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 
 	    @Then("^go back to application page and delete the created application$")
 	    public void go_back_to_application_page_and_delete_the_created_application() throws Throwable {
-	       driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[7]/mat-card[1]/mat-card-actions[1]/div[3]/mat-icon[1]")).click();
+	    	Actions bg= new Actions(driver);
+	    	bg.moveToElement(driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]"))).click().sendKeys("APPLICATION_AUTOMATION").build().perform();
+	    	 Thread.sleep(3000);
+	       driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-actions[1]/div[3]/mat-icon[1]")).click();
 	       Thread.sleep(3000);
 	       driver.findElement(By.xpath("//span[contains(text(),'Delete application')]")).click();
 	       Thread.sleep(3000);

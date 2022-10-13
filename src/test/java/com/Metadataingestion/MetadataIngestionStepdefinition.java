@@ -80,13 +80,20 @@ public class MetadataIngestionStepdefinition extends BaseClass{
 	       Thread.sleep(3000);
 		 driver.findElement(By.xpath("//span[contains(text(),'Ingest Data')]")).click();
 		 Thread.sleep(3000);
-		
-	    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+		 WebElement scriptt =driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"));
+		 
+		 for(int i=0;i<5;i++)
+         {
+       	  scriptt.sendKeys(Keys.ARROW_UP);
+         }
+		 Thread.sleep(3000);
+		 
+	    	/*JavascriptExecutor executor = (JavascriptExecutor) driver;
 	    	driver.switchTo().activeElement();
 	    	Robot rob = new Robot();
 	    	rob.keyPress(KeyEvent.VK_5);
 	    	rob.keyRelease(KeyEvent.VK_5);
-	    	  Thread.sleep(3000);	
+	    	  Thread.sleep(3000);	*/
 	    
 	        
 	    }
@@ -98,11 +105,14 @@ public class MetadataIngestionStepdefinition extends BaseClass{
     @Then("^user ingest the data with proper creds$")
     public void user_ingest_the_data_with_proper_creds() throws Throwable {
     	
-    	WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='source']"));
+    	 driver.findElement(By.xpath("//input[@formcontrolname='source']")).sendKeys("/home/ubuntu/DATA/BLOB_DATA/DBO");
+    	 Thread.sleep(3000);
+		 
+    	/*WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='source']"));
     	JavascriptExecutor executor = (JavascriptExecutor) driver;
     	executor.executeScript("arguments[0].value='/home/ubuntu/DATA/BLOB_DATA/DBO'",script);
-    	Thread.sleep(2000);
-    	//driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
+    	Thread.sleep(2000);*/
+    	driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
     	
         
     }
@@ -172,12 +182,20 @@ public class MetadataIngestionStepdefinition extends BaseClass{
 	    	Thread.sleep(3000);
 	    	driver.findElement(By.xpath("//span[contains(text(),'Ingest Data')]")).click();
 	    	 Thread.sleep(3000);
-	    	JavascriptExecutor executor = (JavascriptExecutor) driver;
+	    	 
+	    	 WebElement scriptt1 =driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"));
+			 for(int i=0;i<5;i++)
+	         {
+	       	  scriptt1.sendKeys(Keys.ARROW_UP);
+	         }
+			 Thread.sleep(3000);
+			 
+	    	/*JavascriptExecutor executor = (JavascriptExecutor) driver;
 	    	driver.switchTo().activeElement();
 	    	Robot rob = new Robot();
 	    	rob.keyPress(KeyEvent.VK_5);
 	    	rob.keyRelease(KeyEvent.VK_5);
-	    	Thread.sleep(3000);
+	    	Thread.sleep(3000);*/
     }
 
 
@@ -185,11 +203,10 @@ public class MetadataIngestionStepdefinition extends BaseClass{
     @Then("^user ingest the data with proper creds in table level$")
     public void user_ingest_the_data_with_proper_creds_in_table_level() throws Throwable {
     	
-    	WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='source']"));
-    	JavascriptExecutor executor = (JavascriptExecutor) driver;
-    	executor.executeScript("arguments[0].value='/home/ubuntu/DATA/BLOB_DATA/DBO/USA_YEAREND'",script);
-    	Thread.sleep(2000);
-    	//driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
+    	driver.findElement(By.xpath("//input[@formcontrolname='source']")).sendKeys("/home/ubuntu/DATA/BLOB_DATA/DBO");
+   	 Thread.sleep(3000);
+		 
+    	driver.findElement(By.xpath("//span[contains(text(),'Ingest')]")).click();
         
     }
     

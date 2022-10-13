@@ -36,7 +36,7 @@ Given new application create with blob data
 Then go to the application and go to metadata tab and go inside a table
 And click on hold tab and create a new hold
 
-Scenario: applying record level hold and deleting it
+
 
 
 

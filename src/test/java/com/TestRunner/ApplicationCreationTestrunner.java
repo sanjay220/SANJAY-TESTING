@@ -14,7 +14,8 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features ="src\\test\\java\\archon\\feature\\ApplicationCreation.feature"
-,glue = "com.StepDefintion2",tags = "@regression", plugin= {"pretty","html:target/myreports.html"}
+,glue = "com.StepDefintion2",tags = "@regression22", plugin= {"pretty","html:target/myreports.html"}
+
 
 
 )

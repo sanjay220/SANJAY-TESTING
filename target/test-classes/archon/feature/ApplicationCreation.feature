@@ -1,7 +1,7 @@
 Feature: APPLICATION CREATION
 
 
-@regression
+@regression22
 Scenario: User should able to create an application
 Given user should able to click the ADD APPLICATION icon
 When user fills the application info with application type active archiving

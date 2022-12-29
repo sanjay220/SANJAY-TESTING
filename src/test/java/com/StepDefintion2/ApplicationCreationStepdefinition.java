@@ -31,9 +31,11 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	    public void user_should_able_to_click_the_add_application_icon() throws Throwable {
 		login();
 		 
-		 Thread.sleep(3000);
+		 Thread.sleep(5000);
 		  driver.manage().window().maximize();
-		  Thread.sleep(3000);
+		  Thread.sleep(7000);
+		  driver.findElement(By.xpath("//span[contains(text(),'close')]")).click();
+		  Thread.sleep(5000);
 	       driver.findElement(By.xpath("//*[@id=\"allow-custom-scroll\"]/mat-drawer-content/div/app-application-listing/div/div[2]/div/div[1]/button[1]/span[1]/mat-icon")).click();
 	       Thread.sleep(3000);
 	       
@@ -138,7 +140,7 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	    @Then("^user enters retention set name$")
 	    public void user_enters_retention_set_name() throws Throwable {
 	       driver.findElement(By.xpath("//input[@formcontrolname='retentionSetName']")).sendKeys("sanjay_policy");
-	       Thread.sleep(2000);
+	       Thread.sleep(3000);
 	    }
 
 	   
@@ -146,7 +148,7 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 
 	    @Then("^user selects policy aging type FIXED$")
 	    public void user_selects_policy_aging_type_fixed() throws Throwable {
-	    	driver.findElement(By.xpath("//*[@id=\"mat-select-value-9\"]/span")).click();
+	    	driver.findElement(By.xpath("//body/app-root[1]/div[1]/div[1]/div[2]/div[1]/mat-dialog-container[1]/app-apply-retention[1]/mat-dialog-content[1]/div[1]/form[1]/div[1]/div[1]/mat-form-field[2]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")).click();
 	    	Thread.sleep(2000);
 	    	driver.findElement(By.xpath("//span[contains(text(),'Fixed Date')]")).click();
 	    	Thread.sleep(3000);
@@ -157,7 +159,9 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	    
 	    @Then("^user should able to create a new retention policy$")
 	    public void user_should_able_to_create_a_new_retention_policy() throws Throwable {
-	    	driver.findElement(By.xpath("//*[@id=\"mat-select-value-11\"]/span")).click();
+	    	//driver.findElement(By.xpath("//body/app-root[1]/div[1]/div[1]/div[2]/div[1]/mat-dialog-container[1]/app-apply-retention[1]/mat-dialog-content[1]/div[1]/form[1]/div[1]/div[1]/mat-form-field[2]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")).click();
+	    	
+	    	driver.findElement(By.xpath("//mat-select[@formcontrolname='policyName']")).click();
 	    	Thread.sleep(2000);
 	    	driver.findElement(By.xpath("//span[contains(text(),'Create retention policy')]")).click();
 	    	
@@ -183,7 +187,7 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 
 	    @When("^user selects aging strategy as FIXED DATE$")
 	    public void user_selects_aging_strategy_as_fixed_date() throws Throwable {
-	    	driver.findElement(By.xpath("//*[@id=\"mat-select-value-13\"]/span")).click();
+	    	driver.findElement(By.xpath("//mat-select[@formcontrolname='agingStrategy']")).click();
 	    	Thread.sleep(3000);
 	    	Robot e = new Robot();
 	    	e.keyPress(KeyEvent.VK_ENTER);
@@ -244,6 +248,13 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	    
 	    @Then("^user clicks on created application$")
 	    public void user_clicks_on_created_application() throws Throwable {
+	    	driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[1]/button[1]/span[1]/mat-icon[1]")).click();
+	    	Thread.sleep(3000);
+	    	Actions ny=new Actions(driver);
+	    	ny.moveToElement(driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]/span[1]"))).click().keyDown(Keys.SHIFT).sendKeys("APPLICATION_AUTOMATION").build().perform();
+	    	
+	    	//driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]")).sendKeys("APPLICATION_AUTOMATION");
+	    	 Thread.sleep(3000);
 	    	driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_AUTOMATION')]")).click();
 	       Thread.sleep(3000);
 	    }
@@ -273,7 +284,21 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 
 	    @Then("^go back to application page and delete the created application$")
 	    public void go_back_to_application_page_and_delete_the_created_application() throws Throwable {
-	    	Actions bg= new Actions(driver);
+	    	
+	    	driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[1]/button[1]/span[1]/mat-icon[1]")).click();
+	    	Thread.sleep(3000);
+	    	Actions ny1=new Actions(driver);
+	    	ny1.moveToElement(driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]/span[1]"))).click().keyDown(Keys.SHIFT).sendKeys("APPLICATION_AUTOMATION").build().perform();
+	    	
+	    	//driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]")).sendKeys("APPLICATION_AUTOMATION");
+	    	
+	    	 Thread.sleep(3000);
+		       driver.findElement(By.xpath("//mat-icon[contains(text(),'more_vert')]")).click();
+		       Thread.sleep(3000);
+		       driver.findElement(By.xpath("//span[contains(text(),'Delete application')]")).click();
+		       Thread.sleep(3000);
+		       driver.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+	    	/*Actions bg= new Actions(driver);
 	    	bg.moveToElement(driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]"))).click().sendKeys("APPLICATION_AUTOMATION").build().perform();
 	    	 Thread.sleep(3000);
 	       driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-actions[1]/div[3]/mat-icon[1]")).click();
@@ -281,7 +306,8 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 	       driver.findElement(By.xpath("//span[contains(text(),'Delete application')]")).click();
 	       Thread.sleep(3000);
 	       driver.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
-	       Thread.sleep(5000);
+	       Thread.sleep(5000);*/
+		       Thread.sleep(5000);
 	    }
 	    
 	    @Then("^go to system settings$")
@@ -292,18 +318,18 @@ public class ApplicationCreationStepdefinition extends BaseClass{
 
 	    @Then("^click on compliance tab$")
 	    public void click_on_compliance_tab() throws Throwable {
-	    	driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer[1]/div[1]/mat-nav-list[1]/mat-list-item[2]/div[1]")).click();
+	    	driver.findElement(By.xpath("//mat-icon[contains(text(),'policy')]")).click();
 	    	Thread.sleep(3000);
 	       
 	    }
 
 	    @Then("^delete the created policy$")
 	    public void delete_the_created_policy() throws Throwable {
-	    	driver.findElement(By.xpath("//td[contains(text(),'TESTING_POLICY29')]")).click();
+	    	driver.findElement(By.xpath("//tbody/tr[1]/td[7]/mat-icon[1]")).click();
 	    	Thread.sleep(3000);
-	    	driver.findElement(By.xpath("//mat-icon[contains(text(),'delete')]")).click();
+	    	driver.findElement(By.xpath("//span[contains(text(),'Delete')]")).click();
 	    	Thread.sleep(2000);
-	    	driver.findElement(By.xpath("//body/app-root[1]/div[1]/div[1]/div[2]/div[1]/mat-dialog-container[1]/app-generic-confirm-dialog[1]/mat-dialog-actions[1]/button[2]")).click();
+	    	driver.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
 	    	Thread.sleep(3000);
 	    	driver.findElement(By.xpath("//mat-icon[contains(text(),'laptop_chromebook')]")).click();
 	    	

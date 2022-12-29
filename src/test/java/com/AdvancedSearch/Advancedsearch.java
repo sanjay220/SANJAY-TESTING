@@ -157,7 +157,7 @@ public class Advancedsearch extends BaseClass {
 	    public void user_perform_the_search() throws Throwable {
 	     driver.findElement(By.xpath("//mat-card-title[contains(text(),'NEW ADVANCE SEARCH')]")).click();
 	     Thread.sleep(3000);
-	     driver.findElement(By.xpath("//span[contains(text(),'Search')]")).click();
+	     //driver.findElement(By.xpath("//span[contains(text(),'Search')]")).click();
 	    }
 
 

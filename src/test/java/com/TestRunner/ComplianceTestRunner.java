@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features ="src\\test\\java\\archon\\feature\\Compliance.feature"
-,glue = "com.Compliance",tags="@smoke6", plugin= {"pretty","html:target/myreports.html"}
+,glue = "com.Compliance",tags="@smoke1", plugin= {"pretty","html:target/myreports.html"}
 
 
 )

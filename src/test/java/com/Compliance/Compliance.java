@@ -15,6 +15,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import junit.framework.Assert;
 
 public class Compliance extends BaseClass{
 	
@@ -22,7 +23,7 @@ public class Compliance extends BaseClass{
 	    public void user_is_on_system_settings() throws Throwable {
 		 login();
 		  Thread.sleep(3000);
-		 driver.findElement(By.xpath("//mat-icon[contains(text(),'settings')]")).click();
+		 driver.findElement(By.xpath("//header/mat-toolbar[1]/div[1]/div[2]/button[3]/span[1]/mat-icon[1]")).click();
 	       Thread.sleep(3000);
 	      
 	    }
@@ -93,7 +94,8 @@ public class Compliance extends BaseClass{
 	        driver.findElement(By.xpath("//mat-icon[contains(text(),'delete')]")).click();
 	        Thread.sleep(3000);
 	        driver.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
-	        
+	        Thread.sleep(3000);
+	        driver.close();
 	    }
 	    
 	    
@@ -176,7 +178,7 @@ public class Compliance extends BaseClass{
 		       Thread.sleep(3000);
 		       driver.findElement(By.xpath("//body/app-root[1]/div[1]/div[1]/div[2]/div[1]/mat-dialog-container[1]/app-apply-retention[1]/mat-dialog-content[1]/div[1]/form[1]/div[1]/div[1]/mat-form-field[3]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")).click();
 		       Thread.sleep(3000);
-		       driver.findElement(By.xpath("//span[contains(text(),'policy666')]")).click();
+		       driver.findElement(By.xpath("//span[contains(text(),'sanjay')]")).click();
 		       Thread.sleep(3000);
 		      
 	        
@@ -283,7 +285,7 @@ public class Compliance extends BaseClass{
 		       Thread.sleep(3000);
 		       driver.findElement(By.xpath("//body/app-root[1]/div[1]/div[1]/div[2]/div[1]/mat-dialog-container[1]/app-apply-retention[1]/mat-dialog-content[1]/div[1]/form[1]/div[1]/div[1]/mat-form-field[3]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")).click();
 		       Thread.sleep(3000);
-		       driver.findElement(By.xpath("//span[contains(text(),'policy666')]")).click();
+		       driver.findElement(By.xpath("//span[contains(text(),'sanjay')]")).click();
 		       Thread.sleep(3000);
 		       driver.findElement(By.xpath("//span[contains(text(),'Apply')]")).click();
 		       Thread.sleep(3000);
@@ -293,6 +295,9 @@ public class Compliance extends BaseClass{
 		    	 Thread.sleep(3000);
 		    	 driver.findElement(By.xpath("//mat-icon[contains(text(),'laptop_chromebook')]")).click();
 		    	 Thread.sleep(3000);
+		    	 Actions bg1= new Actions(driver);
+			    	bg1.moveToElement(driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]"))).click().sendKeys("APPLICATION_AUTOMATION_RET1").build().perform();
+		    
 		    	 driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[8]/mat-card[1]/mat-card-actions[1]/div[3]/mat-icon[1]")).click();
 		    	 Thread.sleep(3000);
 		    	 driver.findElement(By.xpath("//span[contains(text(),'Delete application')]")).click();

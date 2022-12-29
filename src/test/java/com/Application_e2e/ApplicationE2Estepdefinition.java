@@ -36,15 +36,18 @@ login();
 		 
 		 Thread.sleep(3000);
 		  driver.manage().window().maximize();
-		  Thread.sleep(3000);
+		  Thread.sleep(5000);
+		  driver.findElement(By.xpath("//span[contains(text(),'close')]")).click();
+		  Thread.sleep(5000);
+		  
 	       driver.findElement(By.xpath("//*[@id=\"allow-custom-scroll\"]/mat-drawer-content/div/app-application-listing/div/div[2]/div/div[1]/button[1]/span[1]/mat-icon")).click();
-	       Thread.sleep(3000);
+	       Thread.sleep(5000);
 	       
 	        
 	    }
 	  @When("^user fills the application info with application type active archiving$")
 	    public void user_fills_the_application_info_with_application_type_active_archiving() throws Throwable {
-		  driver.findElement(By.xpath("//*[@id=\"mat-input-4\"]")).sendKeys("APPLICATION_E2E1");
+		  driver.findElement(By.xpath("//*[@id=\"mat-input-4\"]")).sendKeys("APPLICATION_END");
 		    Thread.sleep(3000);
 		     driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys("TESTING-SA");
 		    Thread.sleep(3000);
@@ -97,7 +100,7 @@ login();
 	    	
 	    	driver.findElement(By.xpath("//*[@id=\"cdk-step-content-0-2\"]/div/mat-card/div/div[2]/div[3]/button")).click();
 	    	Thread.sleep(3000);
-	        StringSelection ss = new StringSelection("C:\\Users\\Admin\\Downloads\\Metadata\\Blob-data.json");
+	        StringSelection ss = new StringSelection("C:\\Users\\Admin\\Downloads\\Metadata\\BLOB DATA NEW.json");
 	        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 	        Robot robot = new Robot();
 	        robot.delay(250);
@@ -123,14 +126,24 @@ login();
 	    	//jss.executeScript("arguments[0].scrollIntoView()",driver.findElement( By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[11]/mat-card[1]/mat-card-content[1]")));
 	    	//jss.executeScript("window.scrollBy(0,1000)", "");
 	       // Thread.sleep(3000);
-	    	driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_E2E1')]")).click();
-	    	  Thread.sleep(3000);
+	    	//driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_E2E1')]")).click();
+	    	  //Thread.sleep(3000);
+	    	  
+	    	  driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[1]/button[1]/span[1]/mat-icon[1]")).click();
+		    	Thread.sleep(3000);
+		    	Actions ny2=new Actions(driver);
+		    	ny2.moveToElement(driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]/span[1]"))).click().keyDown(Keys.SHIFT).sendKeys("APPLICATION_END").build().perform();
+		    	
+		    	//driver.findElement(By.xpath("//body/app-root[1]/div[1]/app-core[1]/div[1]/mat-drawer-container[1]/mat-drawer-content[1]/div[1]/app-application-listing[1]/div[1]/div[2]/div[1]/div[1]/mat-form-field[1]/div[1]/div[1]/div[2]")).sendKeys("APPLICATION_AUTOMATION");
+		    	 Thread.sleep(3000);
+		    	driver.findElement(By.xpath("//mat-card-title[contains(text(),'APPLICATION_END')]")).click();
+		    	 Thread.sleep(3000);
 	    }
 
 	    @Then("^in created application go to metadata page and click$")
 	    public void in_created_application_go_to_metadata_page_and_click() throws Throwable {
 	    	driver.findElement(By.xpath("//mat-icon[contains(text(),'account_tree')]")).click();
-	    	 Thread.sleep(10000);
+	    	 Thread.sleep(8000);
 	    }
 	    
 	    @And("^user click on ingest data icon$")
@@ -148,18 +161,10 @@ login();
 	    	//
 	    	
 	    	
+	    
 	    	
-	    	/*  driver.switchTo().activeElement();
-		    	Robot rob = new Robot();
-		    	rob.keyPress(KeyEvent.VK_5);
-		    	rob.keyRelease(KeyEvent.VK_5);*/
-	    	
-	    	//
-	    	
-	          WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"));
-	          /*JavascriptExecutor executor = (JavascriptExecutor) driver;
-		    	executor.executeScript("arguments[0].value='5'",script);
-		    	Thread.sleep(2000);*/
+	       WebElement script =driver.findElement(By.xpath("//input[@formcontrolname='filesCountPerSet']"));
+	          
 	          for(int i=0;i<5;i++)
 	          {
 	        	  script.sendKeys(Keys.ARROW_UP);
@@ -178,7 +183,7 @@ login();
 	       	
 	        
 	    	
-	    	 driver.findElement(By.xpath("//input[@formcontrolname='source']")).sendKeys("/home/ads-test/DATA/BLOB_DATA/DBO");
+	    	 driver.findElement(By.xpath("//input[@formcontrolname='source']")).sendKeys("/home/ads-test/TEST_DATA/BLOB DATA_NEW/DATA/DBO");
 	    
 	    
 	    	//
@@ -221,9 +226,9 @@ login();
 		    	WebDriverWait wait = new WebDriverWait(driver, du);
 		    	Boolean until = wait.until(ExpectedConditions.l(by, " Succeeded "));*/
 		    	
-		    	driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
+		    	//driver.manage().timeouts().implicitlyWait(20,TimeUnit.MINUTES);
 		    	
-		    	driver.findElement(By.xpath("//mat-icon[contains(text(),'laptop_chromebook')]")).click();
+		    	//driver.findElement(By.xpath("//mat-icon[contains(text(),'laptop_chromebook')]")).click();
 	    	
 	    	
 	    }
